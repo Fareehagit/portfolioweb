@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin Panel</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!-- <link href="{{ url_for('static', filename = 'assets/img/favicon.png') }}" rel="icon"> -->
+  <link href="{{ url_for('static', filename = 'assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="{{ url_for('static', filename = 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename = 'assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename = 'assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="{{ prof[6] }}" alt=""
+          class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">{{ entry[1] }}</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Skills</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-briefcase"></i>
+              <span>Experience</span></a></li>
+          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-book"></i> <span>Education</span></a></li>
+          <li><a href="#projects" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Projects</span></a>
+          </li>
+          <li><a href="#supervision" class="nav-link scrollto"><i class="bx bx-user-check"></i> <span>Supervision</span></a>
+          </li>
+          <li><a href="#publications" class="nav-link scrollto"><i class="bx bx-news"></i>
+              <span>Publications</span></a></li>
+          
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+ 
+  
+
+  
+
+</body>
+
+<main id="main">
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="#"><b>Dashboard</b></a>
+      <a href="{{ url_for('logout') }}" class="btn btn-outline-success">Log out</a>
+    </div>
+  </nav>
+
+  {% block body %}
+    <div class="container">
+      <h1 class="mb-2 mt-2"><b>Admin Panel</b><a href="{{url_for('add_data') }}"  class="btn btn-success" style="margin-left: 30rem;">Add Page</a>
+        <a href="{{url_for('profile') }}"  class="btn btn-warning" >View Profile</a>
+      </h1>
+      <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Section</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                {% if entry is not none %}
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Home</td>
+                    <td>
+                        <a href="{{ url_for('edit_home', id=entry[0]) }}" class="btn btn-primary btn-xs">Edit</a>
+                    </td>
+                    <td><a href="{{ url_for('delete_home') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                </tr>
+                {% endif %}
+                 
+                {% if skl is not none %}  
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Skills</td>
+                    <td><a href="{{ url_for('edit_skill', id=skl[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                    <td><a href="{{ url_for('delete_skl') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                  </tr>
+                {% endif %}
+
+                {% if sum is not none and redu is not none and fyp is not none and rproj is not none %}
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Resume</td>
+                    <td><a href="{{ url_for('edit_resume') }}" class="btn btn-primary btn-xs">Edit</a></td>
+                    <td><a href="{{ url_for('delete_resume') }}" class="btn btn-danger btn-xs"  onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                  </tr>
+
+                {% endif %}
+
+                {% if exp is not none %}
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Experience</td>
+                    <td><a href="{{ url_for('edit_experience', id=exp[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                    <td><a href="{{ url_for('delete_exp') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                  </tr>
+                {% endif %}
+
+                {% if edu is not none %}
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Education</td>
+                  <td><a href="{{ url_for('edit_education', id=edu[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                  <td><a href="{{ url_for('delete_edu') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                </tr>
+                {% endif %}
+
+                {% if proj is not none %}
+                  <tr>
+                    <th scope="row">6</th>
+                    <td>Projects</td>
+                    <td><a href="{{ url_for('edit_project', id=proj[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                    <td><a href="{{ url_for('delete_proj') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                  </tr>
+
+                {% endif %}
+
+                {% if sup is not none %}
+                  <tr>
+                    <th scope="row">7</th>
+                    <td>Supervision</td>
+                    <td><a href="{{ url_for('edit_supervision', id=sup[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                    <td><a href="{{ url_for('delete_sup') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                  </tr>
+
+                {% endif %}
+
+                {% if pub is not none %}
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Publication</td>
+                  <td><a href="{{ url_for('edit_publication', id=pub[0]) }}" class="btn btn-primary btn-xs">Edit</a></td>
+                  <td><a href="{{ url_for('delete_pub') }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                </tr>
+
+                {% endif %}
+
+                {% if cust != () %}
+                  {% for custom in cust %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ custom[1] }}</td>
+                        <!-- Add other table cells for additional data if needed -->
+                        <td><a href="" class="btn btn-primary btn-xs">Edit</a></td>
+                        <td><a href="{{ url_for('delete_cust', id = custom[0])}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+            
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endblock %}  
+  
+   
+  
+  
+
+</main>
+
+<!-- for modal -->
+
+<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/typed.js/typed.umd.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+
+ 
+</html>

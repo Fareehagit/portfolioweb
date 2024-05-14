@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Edit Resume Sections</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-dark bg-dark" style="margin-bottom: 1.5rem; color: white;" >
+        <div class="container">
+            <span class="navbar-text">
+                <h3 style="color: white;">Edit Resume Sections</h3>
+
+            </span>
+
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <h2 style="margin-bottom: 1.3rem;">Choose Section To Edit</h2>
+        <div  role="group" aria-label="Resume Sections">
+            {% if sum != () %}
+                <a href="{{ url_for('edit_sumry', id=sum[0]) }}" class="btn btn-warning" style="margin-right: 2rem;">Summary</a>
+            {% endif %}
+
+            {% if redu != () %}
+                <a href="{{ url_for('edit_res_edu', id=redu[0]) }}" class="btn btn-warning" style="margin-right: 2rem;">Education</a>
+            {% endif %}
+
+            {% if fyp != () %}
+                <a href="{{ url_for('edit_fyp', id=fyp[0]) }}" class="btn btn-warning" style="margin-right: 2rem;">FYP</a>
+            {% endif %}
+
+            {% if rproj != () %}
+                <a href="{{ url_for('edit_rproj', id=rproj[0]) }}" class="btn btn-warning">Projects</a>
+            {% endif %}
+        </div>
+      </div>
+      
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    
+</body>
+</html>

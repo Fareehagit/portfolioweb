@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Resume Education</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <form class=" container col-md-6 " method="POST" action="">
+
+        <div class="panel bg-primary text-center text-light mb-3 p-3">
+          <h1>Edit Education</h1>
+        </div>
+        <div class="mb-3">
+        <label for="inst_name" class="form-label">Institute</label>
+        <input type="text" class="form-control"  id="inst_name" name="inst_name" value="{{ data[2] }}">
+        </div>
+
+        <div class="mb-3">
+        <label for="degree" class="form-label">Degree</label>
+        <input type="text" class="form-control"  id="degree" name="degree" value="{{ data[1] }}">
+        </div>
+
+       
+
+        <div class="mb-3">
+            <label for="about" class="form-label">About</label>
+            <textarea name="about" id="about" class="form-control align-text-top" autocapitalize="off" style="height: 100%;">{{ data[3] }}</textarea>
+        </div>
+        
+           
+
+        <div class="mb-3">
+        <label for="start_date" class="form-label">Start Date</label>
+        <input type="text" class="form-control"  id="start_date" name="start_date" value="{{ data[4] }}">
+        </div>    
+    
+  
+        <div class="mb-3">
+        <label for="end_date" class="form-label">End Date</label>
+        <input type="text" class="form-control" id="end_date" aria-describedby="emailHelp" name="end_date" value="{{ data[5] }}" >
+        </div>
+        
+       
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</body>
+
+</html>
